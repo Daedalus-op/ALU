@@ -1,0 +1,251 @@
+$date
+	Fri Mar 29 21:05:22 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module add_tb $end
+$var wire 5 ! s [4:0] $end
+$var wire 1 " ovf $end
+$var parameter 32 # N $end
+$var reg 5 $ a [4:0] $end
+$var reg 5 % b [4:0] $end
+$scope module uut $end
+$var wire 5 & a [4:0] $end
+$var wire 5 ' b [4:0] $end
+$var wire 5 ( s [4:0] $end
+$var wire 1 " ovf $end
+$var wire 6 ) c [5:0] $end
+$var parameter 32 * N $end
+$scope begin genblk1[0] $end
+$var parameter 2 + i $end
+$scope module u1 $end
+$var wire 1 , a $end
+$var wire 1 - b $end
+$var wire 1 . cin $end
+$var wire 1 / cout $end
+$var wire 1 0 g $end
+$var wire 1 1 p $end
+$var wire 1 2 s $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[1] $end
+$var parameter 2 3 i $end
+$scope module u1 $end
+$var wire 1 4 a $end
+$var wire 1 5 b $end
+$var wire 1 6 cin $end
+$var wire 1 7 cout $end
+$var wire 1 8 g $end
+$var wire 1 9 p $end
+$var wire 1 : s $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[2] $end
+$var parameter 3 ; i $end
+$scope module u1 $end
+$var wire 1 < a $end
+$var wire 1 = b $end
+$var wire 1 > cin $end
+$var wire 1 ? cout $end
+$var wire 1 @ g $end
+$var wire 1 A p $end
+$var wire 1 B s $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[3] $end
+$var parameter 3 C i $end
+$scope module u1 $end
+$var wire 1 D a $end
+$var wire 1 E b $end
+$var wire 1 F cin $end
+$var wire 1 G cout $end
+$var wire 1 H g $end
+$var wire 1 I p $end
+$var wire 1 J s $end
+$upscope $end
+$upscope $end
+$scope begin genblk1[4] $end
+$var parameter 4 K i $end
+$scope module u1 $end
+$var wire 1 L a $end
+$var wire 1 M b $end
+$var wire 1 N cin $end
+$var wire 1 O cout $end
+$var wire 1 P g $end
+$var wire 1 Q p $end
+$var wire 1 R s $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b100 K
+b11 C
+b10 ;
+b1 3
+b0 +
+b101 *
+b101 #
+$end
+#0
+$dumpvars
+0R
+0Q
+0P
+0O
+0N
+0M
+0L
+0J
+0I
+0H
+0G
+0F
+0E
+0D
+0B
+0A
+0@
+0?
+0>
+0=
+0<
+0:
+09
+08
+07
+06
+05
+04
+02
+01
+00
+0/
+0.
+0-
+0,
+b0 )
+b0 (
+b0 '
+b0 &
+b0 %
+b0 $
+0"
+b0 !
+$end
+#10
+1J
+1F
+1?
+1>
+b1001 !
+b1001 (
+b1100 )
+0B
+12
+17
+1A
+11
+18
+15
+1=
+1,
+14
+b110 %
+b110 '
+b11 $
+b11 &
+#20
+0J
+0F
+1R
+1:
+1N
+0>
+16
+b10010 !
+b10010 (
+b10010 )
+0?
+02
+1/
+0B
+07
+1G
+01
+10
+0A
+08
+1H
+1-
+05
+0=
+1E
+04
+1D
+b1001 %
+b1001 '
+b1001 $
+b1001 &
+#30
+1B
+1"
+1>
+1N
+1F
+b100 !
+b100 (
+b111110 )
+17
+1O
+0:
+0R
+1?
+0J
+1G
+19
+1Q
+1@
+1I
+0H
+15
+1=
+1M
+1<
+0D
+b11111 %
+b11111 '
+b101 $
+b101 &
+#40
+0"
+0O
+1R
+0N
+b11100 !
+b11100 (
+0G
+1J
+0F
+b110 )
+0?
+0@
+05
+0=
+0E
+0M
+14
+0<
+1D
+1L
+b1 %
+b1 '
+b11011 $
+b11011 &
+#60
