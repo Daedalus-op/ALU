@@ -3,7 +3,7 @@ module cla_tb;
   reg [N-1:0] a,b;
   wire [N-1:0] s;
   wire ovf;
-  cla_add #(N) uut(a,b,s,ovf);
+  rca_add #(N) uut(a,b,s,ovf);
 
   initial begin
     $dumpfile("play.vcd");

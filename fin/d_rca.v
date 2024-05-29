@@ -1,4 +1,4 @@
-module fa (
+module rca (
   input a,b,cin,
   output s,cout
 );
