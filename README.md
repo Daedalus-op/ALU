@@ -21,7 +21,7 @@
 
 ### In-Progress
 - Multiplier
-- Shifters
+- Testing Shifters
 
 ### Not started
 - Divider
@@ -41,16 +41,20 @@ d_*.v -> source design files
 *.vcd -> simulation waveform file  
 *.out -> compiled output file    
 
----
-
 ### Note -  
-For convinience add the following lines to .bashrc file
-```
+For convinience  
+- Add the following lines to .bashrc file
+```sh
 function run() {
   elif [ "$PWD" = "$HOME/alu" ];then
-    iverilog *_tb.v d_*.v ~/alu/fin/d*.v
-    ~/alu/a.out
+    iverilog *_tb.v d_*.v fin/d_*.v
+    ./a.out
     gtkwave *.vcd
   fi
 }
-```<br>
+
+```
+- Run the command in terminal in alu main directory
+```
+$ run
+```
