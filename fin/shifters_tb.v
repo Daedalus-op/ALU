@@ -1,10 +1,10 @@
 module shift_tb;
 
 reg dir, clk, rst;
-reg [3:0] a;
-wire [3:0] y;
+reg [7:0] a;
+wire [7:0] y;
 
-shifter #(4) uut (dir, clk, rst, a, y);
+shifter #(8) uut (dir, clk, rst, a, y);
 always begin
   //setup
   $dumpfile("play.vcd");
@@ -14,7 +14,7 @@ always begin
   #5
 
   //testing
-  dir = 1'b0; a = 4'b1010; rst = 1'b0;
+  dir = 1'b0; a = 8'b10101010; rst = 1'b0;
   $display("%b%b%b %b", clk, dir, rst, y);
   #4
   $display("%b%b%b %b", clk, dir, rst, y);
@@ -25,7 +25,7 @@ always begin
   #4
   rst = 1'b1;
   #4
-  dir = 1'b1; a = 4'b1101; rst = 1'b0;
+  dir = 1'b1; a = 8'b11001101; rst = 1'b0;
   $display("%b%b%b %b", clk, dir, rst, y);
   #4
   $display("%b%b%b %b", clk, dir, rst, y);

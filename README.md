@@ -1,16 +1,16 @@
 # ALU design in verilog  
 
 ## Operation table
-| op values   | Operations    |
-| :-: | :-: |
-| 000 | Addition |
-| 001 | Subtraction |
-| 010 | And |
-| 011 | Or |
-| 100 | Not |
-| 101 | Left Shift |
-| 110 | Right Shift |
-| 111 | Multiplication |
+| op values   | Operations    | Status |
+| :-: | :-: | :-: |
+| 000 | Addition | :heavy_check_mark: |
+| 001 | Subtraction | :heavy_check_mark: |
+| 010 | And | :heavy_check_mark: |
+| 011 | Or | :heavy_check_mark: |
+| 100 | Not | :heavy_check_mark: |
+| 101 | Left Shift | :heavy_check_mark: |
+| 110 | Right Shift | :heavy_check_mark: |
+| 111 | Multiplication | :negative_squared_cross_mark: |
 
 
 ## Progress
@@ -21,10 +21,7 @@
 - Shifters
 
 ### In-Progress
-- Multiplier
-
-### Not started
-- Divider
+- Multiplier (Serial)
 
 --- 
 
