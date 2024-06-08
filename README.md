@@ -18,10 +18,10 @@
 - CLA parameterised Adder
 - RCA parameterised Adder
 - Logic Operations
+- Shifters
 
 ### In-Progress
 - Multiplier
-- Testing Shifters
 
 ### Not started
 - Divider
@@ -43,6 +43,9 @@ d_*.v -> source design files
 
 ### Note -  
 For convinience  
+- Follow the following development convention
+  - main directory (./) includes source files that are being construction
+  - fin directory (./fin/) includes verified and working source files
 - Add the following lines to .bashrc file
 ```sh
 function run() {
