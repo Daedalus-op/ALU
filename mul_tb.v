@@ -1,24 +1,29 @@
 module tb_mul;
 
 reg [1:0] a,b;
+reg clk, en;
 wire [3:0] p;
 
-mul uut(a, b, p);
+ser_mul #(2) uut(clk, en, a, b, p);
 
 initial begin
   #5;
-  a = 2'b00; b = 2'b00;
+  a = 2'b11; b = 2'b11; en = 1'b1;
+  #4; en = 1'b0;
+  #4;
   $display("%b * %b = %b", a, b, p);
-  #5;
-  a = 2'b01; b = 2'b00;
+  #4;
   $display("%b * %b = %b", a, b, p);
-  #5;
-  a = 2'b00; b = 2'b11;
+  #4;
   $display("%b * %b = %b", a, b, p);
-  #5;
-  a = 2'b11; b = 2'b11;
+  #4;
   $display("%b * %b = %b", a, b, p);
   #50;
   $finish;
+end
+
+always begin
+  clk = !clk;
+  #2;
 end
 endmodule

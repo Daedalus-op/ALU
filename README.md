@@ -46,11 +46,13 @@ For convinience
 - Add the following lines to .bashrc file
 ```sh
 function run() {
-  elif [ "$PWD" = "$HOME/alu" ];then
-    iverilog *_tb.v d_*.v fin/d_*.v
-    ./a.out
-    gtkwave *.vcd
-  fi
+  echo " ---------------------Compiling...-------------------------------- "
+  iverilog *_tb.v d_*.v fin/d_*.v
+  echo " ---------------------Running Output File------------------------- "
+  ./a.out
+  echo " ---------------------Waveform Veiwer----------------------------- "
+  gtkwave *.vcd &
+  echo " ---------------------Done!--------------------------------------- "
 }
 
 ```
