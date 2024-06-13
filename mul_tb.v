@@ -1,29 +1,43 @@
 module tb_mul;
-
-reg [1:0] a,b;
+parameter N = 4; 
+reg [N - 1:0] a,b;
 reg clk, en;
-wire [3:0] p;
+wire [2 * N - 1:0] p;
 
-ser_mul #(2) uut(clk, en, a, b, p);
+array_mul #(N) uut(clk, en, a, b, p);
 
 initial begin
-  #5;
-  a = 2'b11; b = 2'b11; en = 1'b1;
-  #4; en = 1'b0;
+  $dumpfile("play.vcd");
+  $dumpvars(0,tb_mul);
+
+  clk = 0;
+  #1;
+
+  a = 4'd1; b = 4'd1; en = 1'b0; #1; en = 1'b1;
+  #(2 * N)
+  $display("%b * %b = %d", a, b, p);
+
+  a = 4'd2; b = 4'd2; en = 1'b0; #1; en = 1'b1;
+  #(4 * N)
+  $display("%b * %b = %d", a, b, p);
+
+  a = 4'd3; b = 4'd2; en = 1'b0; #1; en = 1'b1;
+  #(4 * N)
+  $display("%b * %b = %d", a, b, p);
+
+  a = 4'd15; b = 4'd14; en = 1'b0; #1; en = 1'b1;
+  #(4 * N)
+  $display("%b * %b = %d", a, b, p);
+
   #4;
-  $display("%b * %b = %b", a, b, p);
+  $display("%b * %b = %d", a, b, p);
+
   #4;
-  $display("%b * %b = %b", a, b, p);
-  #4;
-  $display("%b * %b = %b", a, b, p);
-  #4;
-  $display("%b * %b = %b", a, b, p);
-  #50;
   $finish;
 end
 
 always begin
-  clk = !clk;
+  clk = ~clk;
   #2;
 end
 endmodule

@@ -11,8 +11,10 @@ module alu #(parameter N=32)(
 // TODO: Use flags
 // TODO: Complete the structure and test it out
 
+reg inp; // Interupt for Multiplier
 wire r_sum, r_diff, r_and, r_or, r_not, r_prod, r_lshift, r_rshift;
-//internal operations
+
+//Internal operations
 // Add & Sub
 cla_add #(N) u_add(a, b, r_sum);
 cla_add #(N) u_sub(a, -b, r_diff);
@@ -23,11 +25,11 @@ ors #(N) u_or(a, b, r_or);
 nots #(N)  u_not(a, r_not);
 
 // Shifters
-shift #(N) u_lshifter(1'b0, clk, en, a, r_lshift);
-shift #(N) u_rshifter(1'b1, clk, en, a, r_rshift);
+shift #(N) u_lshifter(1'b0, clk, inp, a, r_lshift); // Left shift
+shift #(N) u_rshifter(1'b1, clk, inp, a, r_rshift); // Right shift
 
 // Multiplier
-mul #(N) u_mul(clk, a, b, r_prod);
+array_mul #(N) u_mul(clk, a, b, r_prod);
 
 //output mux
 always @ (en) begin

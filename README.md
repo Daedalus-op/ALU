@@ -19,9 +19,10 @@
 - RCA parameterised Adder
 - Logic Operations
 - Shifters
+- Multiplier (Array)
 
 ### In-Progress
-- Multiplier (Serial)
+- Combining all modules into 1 ALU
 
 --- 
 
@@ -47,11 +48,13 @@ For convinience
 ```sh
 function run() {
   echo " ---------------------Compiling...-------------------------------- "
-  iverilog *_tb.v d_*.v fin/d_*.v
+  iverilog -o play *_tb.v d_*.v fin/d_*.v
   echo " ---------------------Running Output File------------------------- "
-  ./a.out
+  vvp play
   echo " ---------------------Waveform Veiwer----------------------------- "
-  gtkwave *.vcd &
+  echo "Press - Ctrl + q to exit"
+  echo "Press - Ctrl + c to interupt"
+  gtkwave *.vcd 
   echo " ---------------------Done!--------------------------------------- "
 }
 
