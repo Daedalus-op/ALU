@@ -46,6 +46,7 @@ For convinience
   - fin directory (./fin/) includes verified and working source files
 - Run the following bash script
 ```sh
+> chmod +x setup.sh
 > . setup.sh 
 ```
 - Run the command in terminal in alu main directory
