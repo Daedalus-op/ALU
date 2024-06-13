@@ -44,22 +44,32 @@ For convinience
 - Follow the following development convention
   - main directory (./) includes source files that are being construction
   - fin directory (./fin/) includes verified and working source files
-- Add the following lines to .bashrc file
+- Run the following bash script
 ```sh
-function run() {
-  echo " ---------------------Compiling...-------------------------------- "
-  iverilog -o play *_tb.v d_*.v fin/d_*.v
-  echo " ---------------------Running Output File------------------------- "
-  vvp play
-  echo " ---------------------Waveform Veiwer----------------------------- "
-  echo "Press - Ctrl + q to exit"
-  echo "Press - Ctrl + c to interupt"
-  gtkwave *.vcd 
-  echo " ---------------------Done!--------------------------------------- "
-}
-
+> . setup.sh 
 ```
 - Run the command in terminal in alu main directory
-```
-$ run
-```
+  - To test the source files in main directory
+  ```
+  > test
+  ```
+  - To test adders
+  ```
+  > test add
+  ```
+  - To test shifters
+  ```
+  > test shift
+  ```
+  - To test single shifters
+  ```
+  > test shift1
+  ```
+  - To test multipliers
+  ```
+  > test mul
+  ```
+  - To test logic modules
+  ```
+  > test logic
+  ```
