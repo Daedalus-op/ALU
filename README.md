@@ -1,7 +1,7 @@
 # ALU design in verilog  
 
 ## Operation table
-| op values   | Operations    | Status |
+| op values | Operations | Status |
 | :-: | :-: | :-: |
 | 000 | Addition | :heavy_check_mark: |
 | 001 | Subtraction | :heavy_check_mark: |
@@ -10,7 +10,7 @@
 | 100 | Not | :heavy_check_mark: |
 | 101 | Left Shift | :heavy_check_mark: |
 | 110 | Right Shift | :heavy_check_mark: |
-| 111 | Multiplication | :negative_squared_cross_mark: |
+| 111 | Multiplication | :heavy_check_mark: |
 
 
 ## Progress
@@ -20,9 +20,9 @@
 - Logic Operations
 - Shifters
 - Multiplier (Array)
+- Combining all modules into 1 ALU
 
 ### In-Progress
-- Combining all modules into 1 ALU
 
 --- 
 
@@ -74,3 +74,11 @@ For convinience
   ```
   > test logic
   ```
+- Note: add "-n" at the end of command to not output waveform
+```
+> test add -n
+```
+  or 
+```
+> test -n
+```

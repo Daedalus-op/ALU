@@ -1,5 +1,5 @@
 // Clocked serial shifters
-module shift #(parameter N=4)(
+module shift #(parameter N = 4)(
   input dir,
   input clk,
   input inp,

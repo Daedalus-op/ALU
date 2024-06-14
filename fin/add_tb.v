@@ -1,6 +1,6 @@
 module cla_tb;
   parameter N = 32;  
-  reg [N-1:0] a,b;
+  reg [N-1:0] a, b;
   wire [N-1:0] s;
   wire ovf;
   rca_add #(N) uut(a,b,s,ovf);
