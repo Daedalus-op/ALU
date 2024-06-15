@@ -54,6 +54,10 @@ For convinience
   ```
   > test
   ```
+  - To test alu
+  ```
+  > test alu
+  ```
   - To test adders
   ```
   > test add
@@ -76,7 +80,7 @@ For convinience
   ```
 - Note: add "-n" at the end of command to not output waveform
 ```
-> test add -n
+> test alu -n
 ```
   or 
 ```
