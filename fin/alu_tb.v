@@ -1,5 +1,6 @@
 module alu_tb;
-parameter N = 4; 
+parameter N = 4;
+parameter T = 4;
 
 reg clk, inp;
 reg [2:0] opcode;
@@ -20,59 +21,59 @@ initial begin
 
   a = 'd5; b = 'd13; // Can be changed to any value
 
-  $display("\nArithmetic----\n");
+  $display("\n----Arithmetic----\n");
   opcode = 3'b000; inp = 1'b0; #1 inp = 1'b1; #1; inp = 1'b0;
   #(4 * N)
   $display("%b + %b = %b_%b (%d)", a, b, ovf, y, {ovf, y}); // add
-  $display("%d + %d = %d\n", a, b, {ovf, y}); // add
+  $display("[ %d + %d = %d ]\n", a, b, {ovf, y}); // add
 
   opcode = 3'b001; inp = 1'b0; #1 inp = 1'b1; #1; inp = 1'b0;
   #(4 * N)
   $display("%b - %b = %b_%b (%d)", a, b, ovf, y, $signed(y)); // sub
-  $display("%d - %d = %d\n", a, b, $signed(y)); // sub
+  $display("[ %d - %d = %d ]\n", a, b, $signed(y)); // sub
 
 
-  $display("Logic----\n");
+  $display("----Logic----\n");
   opcode = 3'b010; inp = 1'b0; #1 inp = 1'b1; #1; inp = 1'b0;
   #(4 * N)
-  $display("%b & %b = %b_%b (%d)", a, b, y_ext, y, y); // and
+  $display("%b & %b = %b (%d)", a, b, y, y); // and
 
   opcode = 3'b011; inp = 1'b0; #1 inp = 1'b1; #1; inp = 1'b0;
   #(4 * N)
-  $display("%b | %b = %b_%b (%d)", a, b, y_ext, y, y); // or
+  $display("%b | %b = %b (%d)", a, b, y, y); // or
 
   opcode = 3'b100; inp = 1'b0; #1 inp = 1'b1; #1; inp = 1'b0;
   #(4 * N)
-  $display("~ %b = %b_%b (%d)\n", a, y_ext, y, y); // not
+  $display("~ %b = %b (%d)\n", a, y, y); // not
 
 
-  $display("Shift----\n");
+  $display("----Shift----\n");
   opcode = 3'b101; inp = 1'b0; #1 inp = 1'b1; #1; inp = 1'b0;
   #(2)
   $display("%b << 1 = %b (%d)", a, y, y); // left shift
   #(4)
-  $display("%b << 1 = %b (%d)", a, y, y); // left shift
+  $display("%b << 2 = %b (%d)", a, y, y); // left shift
   #(4)
-  $display("%b << 1 = %b (%d)", a, y, y); // left shift
+  $display("%b << 3 = %b (%d)", a, y, y); // left shift
   #(4)
-  $display("%b << 1 = %b (%d)\n", a, y, y); // left shift
+  $display("%b << 4 = %b (%d)\n", a, y, y); // left shift
 
   opcode = 3'b110; inp = 1'b0; #1 inp = 1'b1; #1; inp = 1'b0;
   #(2)
   $display("%b >> 1 = %b (%d)", a, y, y); // right shift
   #(4)
-  $display("%b >> 1 = %b (%d)", a, y, y); // right shift
+  $display("%b >> 2 = %b (%d)", a, y, y); // right shift
   #(4)
-  $display("%b >> 1 = %b (%d)", a, y, y); // right shift
+  $display("%b >> 3 = %b (%d)", a, y, y); // right shift
   #(4)
-  $display("%b >> 1 = %b (%d)\n", a, y, y); // right shift
+  $display("%b >> 4 = %b (%d)\n", a, y, y); // right shift
 
 
-  $display("Multiply----\n");
+  $display("----Multiply----\n");
   opcode = 3'b111; inp = 1'b0; #1 inp = 1'b1; #1; inp = 1'b0;
   #(4 * N)
-  $display("%b * %b = %b_%b (%d)", a, b, y_ext, y, {y_ext,y}); // multiply
-  $display("%d * %d = (%d) \n", a, b, {y_ext,y}); // multiply
+  $display("%b * %b = %b_%b (%d)", a, b, y_ext, y, {y_ext, y}); // multiply
+  $display("[ %d * %d = (%d) ]\n", a, b, {y_ext, y}); // multiply
 
   #4;
   $finish;
@@ -80,7 +81,7 @@ end
 
 always begin
   clk = ~clk;
-  #2;
+  #(T / 2);
 end
 
 endmodule
