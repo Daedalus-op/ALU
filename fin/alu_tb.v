@@ -23,55 +23,55 @@ initial begin
 
   $display("\n----Arithmetic----\n");
   opcode = 3'b000; inp = 1'b0; #1 inp = 1'b1; #1; inp = 1'b0;
-  #(4 * N)
+  #(T * N)
   $display("%b + %b = %b_%b (%d)", a, b, ovf, y, {ovf, y}); // add
   $display("[ %d + %d = %d ]\n", a, b, {ovf, y}); // add
 
   opcode = 3'b001; inp = 1'b0; #1 inp = 1'b1; #1; inp = 1'b0;
-  #(4 * N)
+  #(T * N)
   $display("%b - %b = %b_%b (%d)", a, b, ovf, y, $signed(y)); // sub
   $display("[ %d - %d = %d ]\n", a, b, $signed(y)); // sub
 
 
   $display("----Logic----\n");
   opcode = 3'b010; inp = 1'b0; #1 inp = 1'b1; #1; inp = 1'b0;
-  #(4 * N)
+  #(T * N)
   $display("%b & %b = %b (%d)", a, b, y, y); // and
 
   opcode = 3'b011; inp = 1'b0; #1 inp = 1'b1; #1; inp = 1'b0;
-  #(4 * N)
+  #(T * N)
   $display("%b | %b = %b (%d)", a, b, y, y); // or
 
   opcode = 3'b100; inp = 1'b0; #1 inp = 1'b1; #1; inp = 1'b0;
-  #(4 * N)
+  #(T * N)
   $display("~ %b = %b (%d)\n", a, y, y); // not
 
 
   $display("----Shift----\n");
   opcode = 3'b101; inp = 1'b0; #1 inp = 1'b1; #1; inp = 1'b0;
-  #(2)
+  #(T / 2)
   $display("%b << 1 = %b (%d)", a, y, y); // left shift
-  #(4)
+  #(T)
   $display("%b << 2 = %b (%d)", a, y, y); // left shift
-  #(4)
+  #(T)
   $display("%b << 3 = %b (%d)", a, y, y); // left shift
-  #(4)
+  #(T)
   $display("%b << 4 = %b (%d)\n", a, y, y); // left shift
 
   opcode = 3'b110; inp = 1'b0; #1 inp = 1'b1; #1; inp = 1'b0;
-  #(2)
+  #(T / 2)
   $display("%b >> 1 = %b (%d)", a, y, y); // right shift
-  #(4)
+  #(T)
   $display("%b >> 2 = %b (%d)", a, y, y); // right shift
-  #(4)
+  #(T)
   $display("%b >> 3 = %b (%d)", a, y, y); // right shift
-  #(4)
+  #(T)
   $display("%b >> 4 = %b (%d)\n", a, y, y); // right shift
 
 
   $display("----Multiply----\n");
   opcode = 3'b111; inp = 1'b0; #1 inp = 1'b1; #1; inp = 1'b0;
-  #(4 * N)
+  #(T * N)
   $display("%b * %b = %b_%b (%d)", a, b, y_ext, y, {y_ext, y}); // multiply
   $display("[ %d * %d = (%d) ]\n", a, b, {y_ext, y}); // multiply
 
