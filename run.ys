@@ -1,5 +1,0 @@
-read_verilog fin/d_*.v
-hierarchy -top array_mul
-proc; opt; techmap; opt
-write_verilog synth.v
-show alu
