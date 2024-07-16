@@ -42,12 +42,12 @@ For convinience
 - Run the following bash script
 
 ```sh
-$ chmod +x ./scripts/bash_setup.sh
-$ . ./scripts/bash_setup.sh
+chmod +x ./scripts/bash_setup.sh
+. ./scripts/bash_setup.sh
 ```
 
 - Run the command
 
 ```sh
-$ test -h
+test -h
 ```
