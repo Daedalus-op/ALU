@@ -1,22 +1,22 @@
-`include "array_muls.v"
+`include "array_mul.v"
 
-module tb_mul;
+module mul_tb;
   parameter N = 4;
   reg [N - 1:0] a, b;
   reg clk, en;
   wire [2 * N - 1:0] p;
 
   array_mul #(N) uut (
-      clk,
-      en,
-      a,
-      b,
-      p
+      .clk(clk),
+      .inp(en),
+      .a  (a),
+      .b  (b),
+      .y  (p)
   );
 
   initial begin
-    $dumpfile("play.vcd");
-    $dumpvars(0, tb_mul);
+    $dumpfile("./outputs/play.vcd");
+    $dumpvars(0, mul_tb);
 
     clk = 0;
     #1;

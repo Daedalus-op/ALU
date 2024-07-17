@@ -1,13 +1,19 @@
 #/bin/bash
 
-wd="."
+WD="$PWD"
+SRC="$WD/final/src"
+TB="$WD/final/tb"
+
+alias src="cd $SRC"
+alias tb="cd $TB"
+alias wd="cd $WD"
 
 function output ()
 {
   echo " ---------------------Waveform Veiwer----------------------------- "
   echo "Press - Ctrl + q to exit"
   echo "Press - Ctrl + c to interrupt"
-  gtkwave $wd/outputs/*.vcd 
+  gtkwave $WD/outputs/*.vcd 
 }
 
 function helps ()
@@ -30,42 +36,44 @@ function helps ()
 
 
 function test() {
+  TD="$PWD"
+  wd
   echo " ---------------------Compiling...-------------------------------- "
   
   if [ $# == 1 ] || [ $# == 2 ]; then
     if [ $1 == "mul" ]; then
-      iverilog $wd/final/tb/mul_tb.v -o $wd/outputs/play -I $wd/final/src
+      iverilog $WD/final/tb/mul_tb.v -o $WD/outputs/play -I $WD/final/src
     elif [ $1 == "add" ]; then
-      iverilog $wd/final/tb/add_tb.v -o $wd/outputs/play -I $wd/final/src
+      iverilog $WD/final/tb/add_tb.v -o $WD/outputs/play -I $WD/final/src
     elif [ $1 == "shift" ]; then
-      iverilog $wd/final/tb/shifters_tb.v -o $wd/outputs/play -I $wd/final/src
+      iverilog $WD/final/tb/shifters_tb.v -o $WD/outputs/play -I $WD/final/src
     elif [ $1 == "shift1" ]; then
-      iverilog $wd/final/tb/shift1_tb.v -o $wd/outputs/play -I $wd/final/src
+      iverilog $WD/final/tb/shift1_tb.v -o $WD/outputs/play -I $WD/final/src
     elif [ $1 == "logic" ]; then
-      iverilog $wd/final/tb/logic_tb.v -o $wd/outputs/play -I $wd/final/src
+      iverilog $WD/final/tb/logic_tb.v -o $WD/outputs/play -I $WD/final/src
     elif [ $1 == "alu" ]; then
-      iverilog $wd/final/tb/alu_tb.v -o $wd/outputs/play -I $wd/final/src
+      iverilog $WD/final/tb/alu_tb.v -o $WD/outputs/play -I $WD/final/src
     elif [ $1 == "-h" ] || [ $1 == "--help" ]; then
       helps
     fi
   else 
-    iverilog *_tb.v -o $wd/outputs/play d_*.v -I $wd/final/ -I .
+    iverilog *_tb.v -o $WD/outputs/play d_*.v -I $WD/final/ -I .
   fi
   
   if [ $# == 0 ]; then
     echo " ---------------------Running Output File------------------------- "
-    vvp $wd/outputs/play
+    vvp $WD/outputs/play
   elif [ $# == 1 ]; then
     if [ $1 != "-h" ]; then
       echo " ---------------------Running Output File------------------------- "
-      vvp $wd/outputs/play
+      vvp $WD/outputs/play
       if [ $1 != "-n" ]; then
         output
       fi
     fi
   elif [ $# == 2 ]; then
     echo " ---------------------Running Output File------------------------- "
-    vvp $wd/outputs/play
+    vvp $WD/outputs/play
     if [ $2 != "-n" ]; then
       output
     fi
@@ -74,4 +82,5 @@ function test() {
   fi
 
   echo " ---------------------Done!--------------------------------------- "
+  cd $TD
 }

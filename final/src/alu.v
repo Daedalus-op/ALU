@@ -1,5 +1,5 @@
 `include "shifters.v"
-`include "array_muls.v"
+`include "array_mul.v"
 
 
 module alu #(

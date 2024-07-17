@@ -42,7 +42,8 @@ module array_mul #(
   rca_add #(2 * N) ua (
       from_reg,
       from_pps,
-      to_reg
+      to_reg,
+      _
   );
 
   // Summing of partial products
