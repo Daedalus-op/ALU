@@ -1,4 +1,15 @@
-`include "rca.v"
+module rca (
+  input logic a,b,cin,
+  output logic s,cout
+);
+  logic p,g;
+  assign p = a^b;
+  assign g = a&b;
+  assign s = p^cin;
+  assign cout = g|cin&p;
+
+endmodule
+
 
 module rca_add #(
     parameter N = 4
@@ -9,18 +20,11 @@ module rca_add #(
     output logic ovf
 );
 
-  wire [N:0] c;
+  logic [N:0] c;
   assign c[0] = 0;
   genvar i;
   for (i = 0; i < N; i = i + 1) begin
-    rca u1 (
-        a[i],
-        b[i],
-        c[i],
-        s[i],
-        c[i+1]
-    );
+    rca u1 (a[i], b[i], c[i], s[i], c[i+1]);
   end
   assign ovf = c[N];
-
 endmodule

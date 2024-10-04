@@ -1,13 +1,14 @@
 // Clocked serial shifters
 module shift #(parameter N = 4)(
-  input dir,
-  input clk,
-  input inp,
-  input [N - 1:0] a,
-  output [N - 1:0] y
+  output logic [N - 1:0] y,
+  input logic dir,
+  input logic clk,
+  input logic inp,
+  input logic al,
+  input logic [N - 1:0] a
 );
-reg [N - 1:0] cache; // Cache to store intermediate values
-shift1 #(N) u_sh(dir, cache, y);
+logic [N - 1:0] cache; // Cache to store intermediate values
+shift1 #(N) u_sh(y, dir, cache, a);
 
 // Interupt to enter new inputs
 always @(inp) begin
@@ -23,23 +24,27 @@ end
 
 endmodule
 
-
 // Single shifters
 module shift1 #(parameter N = 4) (
-  input dir,
-  input [N - 1:0] a,
-  output reg [N - 1:0] y
+  output logic [N - 1:0] y,
+  input logic dir,
+  input logic al, // logical or arithmetic
+  input logic [N - 1:0] a
 );
 
-reg [N - 1:0] i;
+logic [N - 1:0] i;
 
-always @(*) begin
+always_comb begin
   // Right shift
   if (dir == 1'b1) begin
     for (i = 0; i < N - 1; i = i + 1) begin
       y[i] = a[i + 1];
     end
-    y[N - 1] = 1'b0;
+
+    if(al == 0)
+      y[N - 1] = 1'b0;
+    else
+      y[N - 1] = 1'b1;
   end
 
   // Left Shift

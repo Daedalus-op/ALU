@@ -1,53 +1,20 @@
-# ALU design in verilog  
+# ALU design in system verilog  
 
 ## Operation table
 | op values | Operations | Status |
 | :-: | :-: | :-: |
-| 000 | Addition | :heavy_check_mark: |
-| 001 | Subtraction | :heavy_check_mark: |
-| 010 | And | :heavy_check_mark: |
-| 011 | Or | :heavy_check_mark: |
-| 100 | Not | :heavy_check_mark: |
-| 101 | Left Shift | :heavy_check_mark: |
-| 110 | Right Shift | :heavy_check_mark: |
-| 111 | Multiplication | :heavy_check_mark: |
-
-
-## Progress
-### Done
-- CLA parameterised Adder
-- RCA parameterised Adder
-- Logic Operations
-- Shifters
-- Multiplier (Array)
-- Combining all modules into 1 ALU
-
-### In-Progress
+| 0000 | add | :heavy_check_mark: |
+| 0001 | sub | :heavy_check_mark: |
+| 0010 | and | :heavy_check_mark: |
+| 0011 | or  | :heavy_check_mark: |
+| 0100 | xor | :heavy_check_mark: |
+| 0101 | sll | :heavy_check_mark: |
+| 0110 | srl | :heavy_check_mark: |
+| 0111 | sra | :heavy_check_mark: |
 
 --- 
 
 ## Environment
-- compiler - iverilog  
-- waveform veiwer - GTKWave
+- compiler - vivado / EDA playground
 
 --- 
-
-## Extras
-
-### Note -  
-For convinience  
-- Follow the following development convention
-  - playground directory (./playground/) includes source files that are being construction
-  - final directory (./final/src/) includes verified and working source files
-- Run the following bash script
-
-```sh
-chmod +x ./scripts/bash_setup.sh
-. ./scripts/bash_setup.sh
-```
-
-- Run the command
-
-```sh
-test -h
-```

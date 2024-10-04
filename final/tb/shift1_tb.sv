@@ -1,16 +1,10 @@
-`include "shifters.v"
-
 module shift_tb;
 
-  reg dir, clk;
-  reg  [7:0] a;
-  wire [7:0] y;
+  logic dir, clk;
+  logic [7:0] a;
+  logic [7:0] y;
 
-  shift1 #(8) uut (
-      dir,
-      a,
-      y
-  );
+  shift1 #(8) uut ( dir, a, y);
   initial begin
     //setup
     $dumpfile("play.vcd");

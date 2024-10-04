@@ -1,9 +1,9 @@
 module ands #(
     parameter N = 4
 ) (
-    input  [N - 1:0] a,
-    input  [N - 1:0] b,
-    output [N - 1:0] y
+    input logic  [N - 1:0] a,
+    input logic  [N - 1:0] b,
+    output logic [N - 1:0] y
 );
   genvar i;
   for (i = 0; i < N; i = i + 1) begin
@@ -14,9 +14,9 @@ endmodule
 module ors #(
     parameter N = 4
 ) (
-    input  [N - 1:0] a,
-    input  [N - 1:0] b,
-    output [N - 1:0] y
+    input logic  [N - 1:0] a,
+    input logic  [N - 1:0] b,
+    output logic [N - 1:0] y
 );
   genvar i;
   for (i = 0; i < N; i = i + 1) begin
@@ -24,14 +24,15 @@ module ors #(
   end
 endmodule
 
-module nots #(
+module xors #(
     parameter N = 4
 ) (
-    input  [N - 1:0] a,
-    output [N - 1:0] y
+    input logic  [N - 1:0] a,
+    input logic  [N - 1:0] b,
+    output logic [N - 1:0] y
 );
   genvar i;
   for (i = 0; i < N; i = i + 1) begin
-    not (y[i], a[i]);
+    xor (y[i], a[i], b[i]);
   end
 endmodule

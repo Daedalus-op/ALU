@@ -1,46 +1,45 @@
-`include "array_mul.v"
+module top;
+  parameter N = 32;
+  logic clk;
+  logic inp;
+  logic [N/2 - 1:0] a;
+  logic [N/2 - 1:0] b;
+  logic [N - 1:0] y;
 
-module mul_tb;
-  parameter N = 4;
-  reg [N - 1:0] a, b;
-  reg clk, en;
-  wire [2 * N - 1:0] p;
+  always #5 clk = ~clk;
 
-  array_mul #(N) uut (
-      .clk(clk),
-      .inp(en),
-      .a  (a),
-      .b  (b),
-      .y  (p)
-  );
+  mul_tb tb(y, a, b, inp, clk);
+  array_mul #(N) uut (y, a, b, inp, clk);
 
+endmodule
+
+
+program mul_tb #(parameter N = 32)(
+    input logic [N - 1:0] y,
+    output logic [N/2 - 1:0] a,
+    output logic [N/2 - 1:0] b,
+    output logic inp,
+    input logic clk
+);
+int good, bad;
   initial begin
-    $dumpfile("./outputs/play.vcd");
+    $dumpfile("play.vcd");
     $dumpvars(0, mul_tb);
-
-    clk = 0;
-    #1;
-
-    a  = 4'b1010;
-    b  = 4'b0101;
-    en = 1'b0;
-    #1;
-    en = 1'b1;
-    #(4 * N) $display("%b * %b = %d ,error = %b", a, b, p, (8'd50 - p));
-
-    a  = 4'd2;
-    b  = 4'd2;
-    en = 1'b0;
-    #1;
-    en = 1'b1;
-    #(4 * N) $display("%b * %b = %d ,error = %b", a, b, p, (8'd4 - p));
-
-    a  = 4'd3;
-    b  = 4'd2;
-    en = 1'b0;
-    #1;
-    en = 1'b1;
-    #(4 * N) $display("%b * %b = %d ,error = %b", a, b, p, (8'd6 - p));
+    for(int i = 0; i <= 10; i++) begin
+        inp = 1'b0; #1; inp = 1'b1;
+        a = $urandom;
+        b = $urandom;
+        repeat(N) @(posedge clk);
+        if((a * b) == y)
+            good++;
+        else begin
+            bad++;
+          $display("Error :- for a = %0d, b = %0d = %0d != %0d", a, b, (a+b), {ovf,s});
+        end
+    end
+    $display("Number of good vs bad :- %0d / %0d",good, bad);
+  end
+endprogram
 
     a  = 4'd15;
     b  = 4'd14;
