@@ -1,4 +1,4 @@
-module top;
+module mul_tb_top;
   parameter N = 32;
   logic clk;
   logic inp;
@@ -40,23 +40,3 @@ int good, bad;
     $display("Number of good vs bad :- %0d / %0d",good, bad);
   end
 endprogram
-
-    a  = 4'd15;
-    b  = 4'd14;
-    en = 1'b0;
-    #1;
-    en = 1'b1;
-    #(4 * N) $display("%b * %b = %d ,error = %b", a, b, p, (8'd210 - p));
-
-    #4;
-    $display("%b * %b = %d ,error = %b", a, b, p, (8'd210 - p));
-
-    #4;
-    $finish;
-  end
-
-  always begin
-    clk = ~clk;
-    #2;
-  end
-endmodule

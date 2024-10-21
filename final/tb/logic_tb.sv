@@ -1,4 +1,4 @@
-module top;
+module logic_tb_top;
   parameter N = 32;
   logic [7:0] a;
   logic [7:0] b;
@@ -24,7 +24,7 @@ program logic_tb(
 );
 
 
-  always begin
+  initial begin
     a = 8'b01010101;
     b = 8'b00110011;
     #2 $display(" %b &\n %b \n %b", a, b, y_and);

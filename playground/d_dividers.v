@@ -33,8 +33,9 @@ always @(posedge clk) begin
       ct <= ct - 1;
     end
   else
-    q[ct] <= 1; q
+    q[ct] <= 1;
+  end
 end
-assign y = from_reg;
+assign y = 0;
 
 endmodule

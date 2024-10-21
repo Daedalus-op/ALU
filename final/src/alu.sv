@@ -1,4 +1,4 @@
-`include "shifters.sv"
+
 // hopefull
 module alu #(
     parameter N = 8
@@ -67,6 +67,9 @@ module alu #(
       end
       default: y = 0;
     endcase
-    if (r_diff == 0) flg = 1'b1; // zero for comparators
+    if (r_diff == 0) 
+        flg = 1'b1; // zero for comparators
+    else
+        flg = 1'b0;
   end
 endmodule

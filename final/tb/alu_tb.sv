@@ -1,5 +1,5 @@
 // hopefull
-module top;
+module alu_tb_top;
   parameter N=5;
   logic clk;
   logic [3:0] opcode;
