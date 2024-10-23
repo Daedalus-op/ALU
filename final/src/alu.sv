@@ -19,8 +19,8 @@ module alu #(
 
   //Internal operations
   // Add & Sub
-  rca_add #(N) u_add ( a, b, r_sum, ovf);
-  rca_add #(N) u_sub ( a, -b, r_diff, bor);
+  //rca_add #(N) u_add ( a, b, r_sum, ovf);
+  //rca_add #(N) u_sub ( a, -b, r_diff, bor);
 
   // Logic
   ands #(N) u_and ( a, b, r_and);
@@ -40,12 +40,10 @@ module alu #(
   always @(*) begin
     case (op)
       4'b0000: begin // add;
-        y = r_sum;
-        flg = ovf;
+        y = a+b;
       end
       4'b0001: begin // sub
-        y = r_diff;
-        flg = bor;
+        y = a-b;
       end
       4'b0010: begin // and
         y = r_and;
@@ -67,7 +65,7 @@ module alu #(
       end
       default: y = 0;
     endcase
-    if (r_diff == 0) 
+    if (a-b == 0) 
         flg = 1'b1; // zero for comparators
     else
         flg = 1'b0;
