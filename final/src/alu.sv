@@ -12,8 +12,6 @@ module alu #(
 );
   logic bor, ovf;
 
-  // TODO: Use flags
-
   logic [N - 1:0] r_sum, r_diff, r_and, r_or, r_xor, r_lshift, r_rshift;
   logic [2 * N - 1:0] r_prod;
 
