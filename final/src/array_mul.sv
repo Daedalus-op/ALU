@@ -1,6 +1,3 @@
-`include "logic.v"
-`include "rca_add.v"
-
 module array_mul #(
     parameter N = 4
 ) (

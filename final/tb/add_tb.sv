@@ -1,5 +1,3 @@
-`include "cla_add.v"
-`include "rca_add.v"
 
 module add_tb;
   parameter N = 32;

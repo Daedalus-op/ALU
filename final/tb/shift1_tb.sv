@@ -1,4 +1,4 @@
-module shift_tb;
+module shift1_tb;
 
   logic dir, clk;
   logic [7:0] a;
