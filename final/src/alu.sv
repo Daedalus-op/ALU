@@ -5,7 +5,6 @@ module alu #(
 ) (
     output logic [N - 1:0] y,
     output logic flg,  // Flag
-    input logic clk,
     input logic [3:0] op,  // Opcode
     input logic [N - 1:0] a,
     input logic [N - 1:0] b

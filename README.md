@@ -12,9 +12,13 @@
 | 0110 | srl | :heavy_check_mark: |
 | 0111 | sra | :heavy_check_mark: |
 
---- 
+---
 
 ## Environment
 - compiler - vivado / EDA playground
 
---- 
+---
+
+## In progress
+- Multiplier
+- Divider
