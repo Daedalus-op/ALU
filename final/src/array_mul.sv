@@ -1,5 +1,27 @@
+module unsign_mul #(
+    parameter int N = 4
+) (
+    output logic [2 * N - 1 : 0] product,
+    input logic [N - 1 : 0] a,
+    input logic [N - 1 : 0] b
+);
+  assign product = a * b;
+endmodule
+
+module sign_mul #(
+    parameter int N = 4
+) (
+    output signed [2 * N - 1 : 0] product,
+    input signed [N - 1 : 0] a,
+    input signed [N - 1 : 0] b
+);
+  assign product = a * b;
+endmodule
+
+// --------------------- Currently in use -------------//
+
 module array_mul #(
-    parameter N = 4
+    parameter int N = 4
 ) (
     output logic [N - 1:0] y,
     input logic [N/2 - 1:0] a,
@@ -19,9 +41,13 @@ module array_mul #(
 
   // Partial products
   genvar i;
-  for (i = 0; i < N/2; i = i + 1) begin
-    ands #(N/2) u1 ( {(N/2){a[i]}}, b, pp[i]);  // Creating partial products
-    assign pps[i] = {{(N/2){1'b0}}, pp[i]} << i;  // Shifting partial products
+  for (i = 0; i < N / 2; i = i + 1) begin
+    ands #(N / 2) u1 (
+        {(N / 2) {a[i]}},
+        b,
+        pp[i]
+    );  // Creating partial products
+    assign pps[i] = {{(N / 2) {1'b0}}, pp[i]} << i;  // Shifting partial products
   end
 
   // Interrupts
@@ -31,11 +57,16 @@ module array_mul #(
     ct <= 0;
   end
 
-  rca_add #(N) ua (from_reg, from_pps, to_reg, _);
+  rca_add #(N) ua (
+      from_reg,
+      from_pps,
+      to_reg,
+      _
+  );
 
   // Summing of partial products
   always @(posedge clk) begin
-    if (ct < N/2) begin
+    if (ct < N / 2) begin
       from_reg <= to_reg;
       from_pps <= pps[ct];
       ct <= ct + 1;
